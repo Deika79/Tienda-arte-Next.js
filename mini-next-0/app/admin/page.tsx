@@ -1,6 +1,24 @@
-import { orders } from "@/lib/ordersStore"
+export const dynamic = "force-dynamic"
 
-export default function AdminPage() {
+type Order = {
+  slug: string
+  name: string
+  email: string
+  message: string
+  date: string
+}
+
+async function getOrders(): Promise<Order[]> {
+  const res = await fetch("http://localhost:3000/api/orders", {
+    cache: "no-store"
+  })
+
+  return res.json()
+}
+
+export default async function AdminPage() {
+  const orders = await getOrders()
+
   return (
     <main style={{ padding: "24px" }}>
       <h1>Panel de pedidos</h1>
