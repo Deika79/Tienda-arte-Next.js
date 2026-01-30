@@ -2,6 +2,7 @@ import { artworks } from "@/lib/artworks"
 import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 import Image from "next/image"
+import OrderForm from "@/components/OrderForm"
 
 type Props = {
   params: Promise<{
@@ -22,7 +23,7 @@ export default async function ArtworkPage({ params }: Props) {
   }
 
   return (
-    <main>
+    <main style={{ padding: "24px" }}>
       <h1>{artwork.title}</h1>
 
       <Image
@@ -35,6 +36,9 @@ export default async function ArtworkPage({ params }: Props) {
       <p><strong>Artista:</strong> {artwork.artist}</p>
       <p><strong>Precio:</strong> {artwork.price} €</p>
       <p>{artwork.description}</p>
+
+      {/* Aquí va el formulario */}
+      <OrderForm slug={artwork.slug} />
     </main>
   )
 }
