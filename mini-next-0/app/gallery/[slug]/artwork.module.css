@@ -1,0 +1,25 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.image {
+  margin: 24px 0;
+  border-radius: 8px;
+}
+
+.info {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.price {
+  font-weight: bold;
+  margin-top: 12px;
+}

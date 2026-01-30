@@ -3,6 +3,8 @@ import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 import Image from "next/image"
 import OrderForm from "@/components/OrderForm"
+import styles from "./artwork.module.css"
+
 
 type Props = {
   params: Promise<{
@@ -23,24 +25,31 @@ export default async function ArtworkPage({ params }: Props) {
   }
 
   return (
-    <main style={{ padding: "24px" }}>
-      <h1>{artwork.title}</h1>
+  <main className={styles.container}>
+    <h1 className={styles.title}>{artwork.title}</h1>
 
-      <Image
-        src={artwork.image}
-        alt={artwork.title}
-        width={600}
-        height={400}
-      />
+    <Image
+      src={artwork.image}
+      alt={artwork.title}
+      width={600}
+      height={400}
+      className={styles.image}
+    />
 
-      <p><strong>Artista:</strong> {artwork.artist}</p>
-      <p><strong>Precio:</strong> {artwork.price} €</p>
-      <p>{artwork.description}</p>
+    <p className={styles.info}>
+      <strong>Artista:</strong> {artwork.artist}
+    </p>
 
-      {/* Aquí va el formulario */}
-      <OrderForm slug={artwork.slug} />
-    </main>
-  )
+    <p className={styles.price}>
+      {artwork.price} €
+    </p>
+
+    <p>{artwork.description}</p>
+
+    <OrderForm slug={artwork.slug} />
+  </main>
+)
+
 }
 
 // SEO dinámico por obra

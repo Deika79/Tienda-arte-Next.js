@@ -1,5 +1,7 @@
 "use client"
 import { useState } from "react"
+import styles from "./OrderForm.module.css"
+
 
 type Props = {
   slug: string
@@ -50,58 +52,44 @@ export default function OrderForm({ slug }: Props) {
   }
 
   return (
-    <form onSubmit={handleSubmit} style={{ marginTop: "24px" }}>
-      <h3>Contactar / Comprar</h3>
+    <form onSubmit={handleSubmit} className={styles.form}>
+  <h3 className={styles.title}>Contactar / Comprar</h3>
 
-      <div>
-        <label>
-          Nombre:* <br />
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-            style={{ width: "300px", padding: "6px" }}
-          />
-        </label>
-      </div>
+  <div className={styles.field}>
+    <input
+      className={styles.input}
+      placeholder="Nombre"
+      value={name}
+      onChange={(e) => setName(e.target.value)}
+      required
+    />
+  </div>
 
-      <div style={{ marginTop: "12px" }}>
-        <label>
-          Email:* <br />
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            style={{ width: "300px", padding: "6px" }}
-          />
-        </label>
-      </div>
+  <div className={styles.field}>
+    <input
+      className={styles.input}
+      type="email"
+      placeholder="Email"
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
+      required
+    />
+  </div>
 
-      <div style={{ marginTop: "12px" }}>
-        <label>
-          Mensaje: <br />
-          <textarea
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            rows={4}
-            style={{ width: "300px", padding: "6px" }}
-          ></textarea>
-        </label>
-      </div>
+  <div className={styles.field}>
+    <textarea
+      className={styles.textarea}
+      placeholder="Mensaje (opcional)"
+      value={message}
+      onChange={(e) => setMessage(e.target.value)}
+      rows={4}
+    />
+  </div>
 
-      <button
-        type="submit"
-        disabled={loading}
-        style={{
-          marginTop: "16px",
-          padding: "10px 20px",
-          cursor: "pointer"
-        }}
-      >
-        {loading ? "Enviando..." : "Enviar"}
-      </button>
-    </form>
+  <button className={styles.button} disabled={loading}>
+    {loading ? "Enviando..." : "Enviar"}
+  </button>
+</form>
+
   )
 }
